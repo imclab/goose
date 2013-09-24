@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>The Gallery<h2>
+	<div id="pics">
+		{% for pic in pics %}
+			<div class="pic">
+				<a href="/pic/{{ pic['_id'] }}">{{ pic['file_name'] }}</a>
+				<a href="/pic/{{ pic['_id'] }}">
+					<img class="img" src="{{ pic['url'] }}">
+				</a>
+			</div>
+		{% end %}			
+	</div>
+{% end %}

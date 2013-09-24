@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+	<div id="content">
+		<form action="/submit" method="POST" enctype="multipart/form-data">
+			<input type="file" name="picture" accept="image/*">
+			<textarea rows="4" cols="50" name="story"></textarea>
+			<input type="submit">
+		</form>
+	</div>
+{% end %}
