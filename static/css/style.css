@@ -51,8 +51,7 @@ form input{
 }
 
 #pic {
-  width: 600px;
-  flex: 280px;
+  width: 680px;
   background-size: cover;
   /*box-shadow: 2px 2px 10px gray;*/
   -webkit-border-radius: 8px;
