@@ -2,10 +2,48 @@ body {
 	background-image: url('../img/bg-texture.png')
 }
 
+form input{
+  display: block;
+} 
+
 #content {
-	display: block;
-	width: 1210px;
-	margin:0px auto;
+  display: block;
+  width: 1210px;
+  margin:0px auto;
+}
+
+#pics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.img {
+  margin: 18px;
+  width: 280px;
+  height: 280px;
+  flex: 280px;
+  background-size: cover;
+  box-shadow: 2px 2px 10px gray;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+#pic_container {
+  width: 680px;
+  margin: 0px auto;
+}
+
+#pic {
+  margin: 18px;
+  width: 600px;
+  flex: 280px;
+  background-size: cover;
+  /*box-shadow: 2px 2px 10px gray;*/
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 .axis path,

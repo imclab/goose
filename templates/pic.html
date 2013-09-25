@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-	<img src="{{url}}"/>
-	<h2>Story<h2>
-	<p>{{ story }}</p>
-	<div id="comments">
-		{% for comment in comments %}
-			<p> {{ comment }}</p>
-		{% end %}			
+	<div id="pic_container">
+		<a href="/gallery">back to gallery</a>
+		<h2>{{title}}<h2/>
+		<img id="pic" src="{{url}}"/>
+		<h2>Story<h2>
+		<p>{{ story }}</p>
+		<h2>Comments/Additions<h2>
+		<div id="comments">
+			{% for comment in comments %}
+				<p> {{ comment }}</p>
+			{% end %}			
+		</div>
+		<form action="/comment/{{ id }}" method="POST" enctype="multipart/form-data">
+			<textarea rows="4" cols="50" name="comment" placeholder="Add a comment or additional information!"></textarea>
+			<input type="submit">
+		</form>		
 	</div>
 {% end %}

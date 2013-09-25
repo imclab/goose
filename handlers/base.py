@@ -27,7 +27,7 @@ class BaseHandler(tornado.web.RequestHandler):
 		return self.get_secure_cookie("username")
 
 
-class MainHandler(BaseHandler):
+class UploadHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.get_secure_cookie('username')
@@ -43,7 +43,7 @@ class LoginHandler(tornado.web.RequestHandler):
 
 		if password == 'pizzatime':
 			self.set_secure_cookie('username', 'friend');
-			self.redirect('/')
+			self.redirect('/gallery')
 
 
 class SubmitHandler(tornado.web.RequestHandler):
@@ -74,8 +74,11 @@ class PicHandler(tornado.web.RequestHandler):
 		url = doc['url']
 		story = doc['story']
 		comments = doc['comments']
-		self.render('pic.html', url=url, 
-			story=story, comments=comments)
+		title = doc['file_name']
+		id = str(doc['_id'])
+		print comments
+		self.render('pic.html', url=url, story=story, 
+			comments=comments, title=title, id=id)
 
 
 class GalleryHandler(BaseHandler):
@@ -84,4 +87,10 @@ class GalleryHandler(BaseHandler):
 		pics = db.pics.find()
 		pics = pics[:]
 		self.render('gallery.html', pics=pics)
+
+class CommentHandler(tornado.web.RequestHandler):
+	def post(self, input):
+		comment = self.get_argument('comment')
+		doc = db.pics.update({'_id': ObjectId(input)}, {'$push': {'comments':comment}})
+		self.redirect('/pic/' + input)
 
