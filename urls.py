@@ -5,8 +5,9 @@ from handlers import base
 url_patterns = [
     (r"/gallery", base.GalleryHandler),
     (r"/login", base.LoginHandler),
+    (r"/logout", base.LogoutHandler),
     (r"/submit", base.SubmitHandler),
     (r"/pic/(\w+)", base.PicHandler),
-    (r"/upload", base.UploadHandler),
+    (r"/", base.MainHandler),
     (r"/comment/(\w+)", base.CommentHandler),
 ]

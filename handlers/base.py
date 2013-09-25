@@ -27,11 +27,11 @@ class BaseHandler(tornado.web.RequestHandler):
 		return self.get_secure_cookie("username")
 
 
-class UploadHandler(BaseHandler):
+class MainHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.get_secure_cookie('username')
-        self.render('index.html')
+        self.redirect('/gallery')
 
 
 class LoginHandler(tornado.web.RequestHandler):
@@ -45,6 +45,11 @@ class LoginHandler(tornado.web.RequestHandler):
 			self.set_secure_cookie('username', 'friend');
 			self.redirect('/gallery')
 
+
+class LogoutHandler(tornado.web.RequestHandler):
+	def get(self):
+		self.clear_cookie('username')
+		self.redirect('/gallery')
 
 class SubmitHandler(tornado.web.RequestHandler):
 	def post(self):
@@ -68,7 +73,8 @@ class SubmitHandler(tornado.web.RequestHandler):
 		os.remove(file_path)
 		self.redirect('/pic/'+str(id))
 
-class PicHandler(tornado.web.RequestHandler):
+class PicHandler(BaseHandler):
+	@tornado.web.authenticated
 	def get(self, input):
 		doc = db.pics.find_one({'_id': ObjectId(input)})
 		url = doc['url']

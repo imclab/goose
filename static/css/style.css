@@ -1,15 +1,29 @@
 body {
-	background-image: url('../img/bg-texture.png')
+	background-image: url('../img/bg-texture.png');
+  font-family: futura;
+}
+
+#content {
+  display: block;
+  width: 960px;
+  margin:0px auto;
 }
 
 form input{
   display: block;
-} 
+}
 
-#content {
-  display: block;
-  width: 1210px;
+#signin{
+  width: 400px;
   margin:0px auto;
+}
+
+#signin input[name="password"]{
+  width: 380px;
+  height:40px;
+  border-radius: 10px;
+  margin: 300px auto 10px auto;
+  font-size:20px;
 }
 
 #pics {
@@ -33,10 +47,10 @@ form input{
 #pic_container {
   width: 680px;
   margin: 0px auto;
+  padding: 20px;
 }
 
 #pic {
-  margin: 18px;
   width: 600px;
   flex: 280px;
   background-size: cover;
@@ -44,6 +58,25 @@ form input{
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+
+#story, #comments{
+  border-bottom:1px solid gray;
+  margin-bottom: 20px;
+}
+
+#story h2, #comments h2{ 
+  margin:5px;
+}
+
+#story p {
+  margin: 5px 5px 20px 5px;
+}
+
+#comment {
+  padding-left: 20px;
+  margin-bottom:10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .axis path,

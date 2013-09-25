@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-	<h2>Upload Your Funniest Goose Pics<h2>
+	<h2>Upload and Comment on Your Funny Goose Pics<h2>
 	<form action="/submit" method="POST" enctype="multipart/form-data">
 			<input type="file" name="picture" accept="image/*">
 			<textarea rows="4" cols="50" name="story" placeholder="Add the story that goes with the pic!"></textarea>
@@ -9,7 +9,6 @@
 	<div id="pics">
 		{% for pic in pics %}
 			<div class="pic-container">
-				<!-- <a href="/pic/{{ pic['_id'] }}">{{ pic['file_name'] }}</a> -->
 				<a href="/pic/{{ pic['_id'] }}">
 					<img class="img" src="{{ pic['url'] }}">
 				</a>
